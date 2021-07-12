@@ -3,6 +3,7 @@ package org.Models;
 import java.math.BigDecimal;
 
 public class ArticuloCompra {
+
     private long codigoArticulo;
     private int cantidadOrdenada;
     private String unidadCompra;

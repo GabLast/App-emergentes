@@ -20,7 +20,7 @@ public class MongoDB {
     public static MongoDatabase getDB() {
 
         //------------- Obtener objeto de una base datos -------------//
-        return connect().getDatabase("compras");
+        return connect().getDatabase("inventario");
     }
 
     public static void stopDB() {

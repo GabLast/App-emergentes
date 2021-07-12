@@ -1,22 +1,31 @@
 package org.Models;
 
-import java.text.SimpleDateFormat;
+import org.Database.MongoDB;
+
 import java.util.Date;
 
 public class MovimientoInventario {
 
     private long codigoMovimiento;
-    private long codigoAlmacen;
+    private long codigoArticulo;
     private String tipoMovimiento;
     private int cantidad;
-    private Date fechaMovmiento;
+    private Date fechaMovimiento;
 
-    public MovimientoInventario(long codigoMovimiento, long codigoAlmacen, String tipoMovimiento, int cantidad, Date fechaMovmiento) {
+    public MovimientoInventario(long codigoMovimiento, long codigoArticulo, String tipoMovimiento, int cantidad, Date fechaMovimiento) {
         this.codigoMovimiento = codigoMovimiento;
-        this.codigoAlmacen = codigoAlmacen;
+        this.codigoArticulo = codigoArticulo;
         this.tipoMovimiento = tipoMovimiento;
         this.cantidad = cantidad;
-        this.fechaMovmiento = fechaMovmiento;
+        this.fechaMovimiento = fechaMovimiento;
+    }
+
+    public MovimientoInventario(long codigoArticulo, String tipoMovimiento, int cantidad, Date fechaMovimiento) {
+        this.codigoMovimiento = MongoDB.getDB().getCollection("movimientos").countDocuments()+1;
+        this.codigoArticulo = codigoArticulo;
+        this.tipoMovimiento = tipoMovimiento;
+        this.cantidad = cantidad;
+        this.fechaMovimiento = fechaMovimiento;
     }
 
     public long getCodigoMovimiento() {
@@ -27,12 +36,12 @@ public class MovimientoInventario {
         this.codigoMovimiento = codigoMovimiento;
     }
 
-    public long getCodigoAlmacen() {
-        return codigoAlmacen;
+    public long getCodigoArticulo() {
+        return codigoArticulo;
     }
 
-    public void setCodigoAlmacen(long codigoAlmacen) {
-        this.codigoAlmacen = codigoAlmacen;
+    public void setCodigoArticulo(long codigoArticulo) {
+        this.codigoArticulo = codigoArticulo;
     }
 
     public String getTipoMovimiento() {
@@ -51,11 +60,11 @@ public class MovimientoInventario {
         this.cantidad = cantidad;
     }
 
-    public Date getFechaMovmiento() {
-        return fechaMovmiento;
+    public Date getFechaMovimiento() {
+        return fechaMovimiento;
     }
 
-    public void setFechaMovmiento(Date fechaMovmiento) {
-        this.fechaMovmiento = fechaMovmiento;
+    public void setFechaMovimiento(Date fechaMovimiento) {
+        this.fechaMovimiento = fechaMovimiento;
     }
 }

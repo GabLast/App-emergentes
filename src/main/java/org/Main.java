@@ -1,34 +1,31 @@
 package org;
 
-import com.mongodb.client.MongoCollection;
-import io.javalin.Javalin;
-import io.javalin.core.util.RouteOverviewPlugin;
-import org.Database.MongoDB;
-import org.bson.Document;
+import org.Models.Articulo;
+import org.Services.ArticuloServices;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        //******************************************************//
-        //Base de datos
+//        Javalin app = Javalin.create(config -> {
+//            config.addStaticFiles("/public");
+//            config.registerPlugin(new RouteOverviewPlugin("rutas"));
+//            config.enableCorsForAllOrigins();
+//
+//        }).start(7000);
+//
+//        new MainController(app).routes();
+//
+//        app.get("/", ctx -> {
+//            ctx.redirect("/home");
+//        });
+//
+//        app.error(404, ctx -> {
+//            ctx.redirect("/404.html");
+//        });
 
-        MongoCollection<Document> collection = MongoDB.getDB().getCollection("inventario");
-        System.out.println(collection.countDocuments());
-        //******************************************************//
-
-        Javalin app = Javalin.create(config -> {
-            config.addStaticFiles("/public");
-            config.registerPlugin(new RouteOverviewPlugin("rutas"));
-            config.enableCorsForAllOrigins();
-
-        }).start(7000);
-
-        app.get("/", ctx -> {
-            ctx.redirect("/home");
-        });
-
-        app.error(404, ctx -> {
-            ctx.redirect("/404.html");
-        });
     }
 }

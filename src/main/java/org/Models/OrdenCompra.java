@@ -2,21 +2,27 @@ package org.Models;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
+
 
 public class OrdenCompra {
     private long codigoOrdenCompra;
+    private long codigoArticulo;
     private long codigoSuplidor;
     private Date fechaOrden;
+    private BigDecimal precioCompra;
+    private int cantidadOrdenada;
     private BigDecimal montoTotal;
-    private List<ArticuloCompra> articulos;
+    private String unidadCompra;
 
-    public OrdenCompra(long codigoOrdenCompra, long codigoSuplidor, Date fechaOrden, BigDecimal montoTotal, List<ArticuloCompra> articulos) {
+    public OrdenCompra(long codigoOrdenCompra, long codigoArticulo, long codigoSuplidor, Date fechaOrden, BigDecimal precioCompra, int cantidadOrdenada, BigDecimal montoTotal, String unidadCompra) {
         this.codigoOrdenCompra = codigoOrdenCompra;
+        this.codigoArticulo = codigoArticulo;
         this.codigoSuplidor = codigoSuplidor;
         this.fechaOrden = fechaOrden;
+        this.precioCompra = precioCompra;
+        this.cantidadOrdenada = cantidadOrdenada;
         this.montoTotal = montoTotal;
-        this.articulos = articulos;
+        this.unidadCompra = unidadCompra;
     }
 
     public long getCodigoOrdenCompra() {
@@ -25,6 +31,14 @@ public class OrdenCompra {
 
     public void setCodigoOrdenCompra(long codigoOrdenCompra) {
         this.codigoOrdenCompra = codigoOrdenCompra;
+    }
+
+    public long getCodigoArticulo() {
+        return codigoArticulo;
+    }
+
+    public void setCodigoArticulo(long codigoArticulo) {
+        this.codigoArticulo = codigoArticulo;
     }
 
     public long getCodigoSuplidor() {
@@ -43,6 +57,22 @@ public class OrdenCompra {
         this.fechaOrden = fechaOrden;
     }
 
+    public BigDecimal getPrecioCompra() {
+        return precioCompra;
+    }
+
+    public void setPrecioCompra(BigDecimal precioCompra) {
+        this.precioCompra = precioCompra;
+    }
+
+    public int getCantidadOrdenada() {
+        return cantidadOrdenada;
+    }
+
+    public void setCantidadOrdenada(int cantidadOrdenada) {
+        this.cantidadOrdenada = cantidadOrdenada;
+    }
+
     public BigDecimal getMontoTotal() {
         return montoTotal;
     }
@@ -51,11 +81,11 @@ public class OrdenCompra {
         this.montoTotal = montoTotal;
     }
 
-    public List<ArticuloCompra> getArticulos() {
-        return articulos;
+    public String getUnidadCompra() {
+        return unidadCompra;
     }
 
-    public void setArticulos(List<ArticuloCompra> articulos) {
-        this.articulos = articulos;
+    public void setUnidadCompra(String unidadCompra) {
+        this.unidadCompra = unidadCompra;
     }
 }

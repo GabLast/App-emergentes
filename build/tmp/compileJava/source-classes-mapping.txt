@@ -1,8 +1,20 @@
-org/Controllers/Placeholder.java
- org.Controllers.Placeholder
-org/Models/Placeholder.java
- org.Models.Placeholder
-org/Main.java
- org.Main
+org/Models/ArticuloCompra.java
+ org.Models.ArticuloCompra
+org/Models/Suplidor.java
+ org.Models.Suplidor
+org/Models/Almacen.java
+ org.Models.Almacen
+org/Controllers/MainController.java
+ org.Controllers.MainController
+org/Models/MovimientoInventario.java
+ org.Models.MovimientoInventario
+org/Models/OrdenCompra.java
+ org.Models.OrdenCompra
 org/Database/MongoDB.java
  org.Database.MongoDB
+org/Models/Articulo.java
+ org.Models.Articulo
+org/Services/ArticuloServices.java
+ org.Services.ArticuloServices
+org/Main.java
+ org.Main

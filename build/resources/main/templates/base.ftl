@@ -27,6 +27,7 @@
             background-size: cover;
             background-attachment: fixed;
         }
+
         .btn-eliminar {
             background-color: darkred !important;
             color: whitesmoke !important;
@@ -38,15 +39,9 @@
         }
     </style>
     <#--body here-->
-    <#if usuario?has_content>
-        <#if usuario.admin == 1>
-            <#include "adminNavBar.ftl">
-        <#else>
-            <#include "normalNavBar.ftl">
-        </#if>
-    <#else>
-        <#include "normalNavBar.ftl">
-    </#if>
+
+    <#include "adminNavBar.ftl">
+
     <br><br><br>
     <@page_body/>
     <#--scripts-->
