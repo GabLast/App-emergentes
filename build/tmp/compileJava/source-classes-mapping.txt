@@ -1,20 +1,24 @@
-org/Models/ArticuloCompra.java
- org.Models.ArticuloCompra
-org/Models/Suplidor.java
- org.Models.Suplidor
-org/Models/Almacen.java
- org.Models.Almacen
-org/Controllers/MainController.java
- org.Controllers.MainController
-org/Models/MovimientoInventario.java
- org.Models.MovimientoInventario
-org/Models/OrdenCompra.java
- org.Models.OrdenCompra
 org/Database/MongoDB.java
  org.Database.MongoDB
-org/Models/Articulo.java
- org.Models.Articulo
+org/Models/Suplidor.java
+ org.Models.Suplidor
+org/Models/ArticuloCompra.java
+ org.Models.ArticuloCompra
 org/Services/ArticuloServices.java
  org.Services.ArticuloServices
+org/Services/SuplidorServices.java
+ org.Services.SuplidorServices
+org/Models/MovimientoInventario.java
+ org.Models.MovimientoInventario
+org/Services/MovimientoServices.java
+ org.Services.MovimientoServices
+org/Models/Articulo.java
+ org.Models.Articulo
+org/Controllers/MainController.java
+ org.Controllers.MainController
+org/Models/OrdenCompra.java
+ org.Models.OrdenCompra
 org/Main.java
  org.Main
+org/Services/OrdenCompraServices.java
+ org.Services.OrdenCompraServices

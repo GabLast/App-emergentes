@@ -14,14 +14,16 @@ public class OrdenCompra {
     private BigDecimal montoTotal;
     private String unidadCompra;
 
-    public OrdenCompra(long codigoOrdenCompra, long codigoArticulo, long codigoSuplidor, Date fechaOrden, BigDecimal precioCompra, int cantidadOrdenada, BigDecimal montoTotal, String unidadCompra) {
+    public OrdenCompra() {
+    }
+
+    public OrdenCompra(long codigoOrdenCompra, long codigoArticulo, long codigoSuplidor, Date fechaOrden, BigDecimal precioCompra, int cantidadOrdenada, String unidadCompra) {
         this.codigoOrdenCompra = codigoOrdenCompra;
         this.codigoArticulo = codigoArticulo;
         this.codigoSuplidor = codigoSuplidor;
         this.fechaOrden = fechaOrden;
         this.precioCompra = precioCompra;
         this.cantidadOrdenada = cantidadOrdenada;
-        this.montoTotal = montoTotal;
         this.unidadCompra = unidadCompra;
     }
 
