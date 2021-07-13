@@ -76,8 +76,8 @@ public class OrdenCompraServices {
                         .append("codigoSuplidor", "$_id.codigoSuplidor")
                         .append("fechaOrden", "$_id.fechaOrden")
                         .append("unidadCompra", "$_id.unidadCompra")
-                        .append("cantidadOrdenada", "$cantidadOrdenada")
-                        .append("precioCompra", "$precioCompra")
+                        .append("cantidadOrdenada", "$_id.cantidadOrdenada")
+                        .append("precioCompra", "$_id.precioCompra")
                         .append("montoTotal", "$montoTotal");
 
         listadoEtapas.add(new Document("$project", project2));
