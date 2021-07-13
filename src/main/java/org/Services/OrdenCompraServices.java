@@ -58,7 +58,9 @@ public class OrdenCompraServices {
                 .append("codigoArticulo", "$codigoArticulo")
                 .append("codigoSuplidor", "$codigoSuplidor")
                 .append("fechaOrden", "$fechaOrden")
-                .append("unidadCompra", "$unidadCompra");
+                .append("unidadCompra", "$unidadCompra")
+                .append("cantidadOrdenada", "$cantidadOrdenada")
+                .append("precioCompra", "$precioCompra");
 
         Document sum = new Document("$sum", "$montoPorArticulo");
 
@@ -74,6 +76,8 @@ public class OrdenCompraServices {
                         .append("codigoSuplidor", "$_id.codigoSuplidor")
                         .append("fechaOrden", "$_id.fechaOrden")
                         .append("unidadCompra", "$_id.unidadCompra")
+                        .append("cantidadOrdenada", "$cantidadOrdenada")
+                        .append("precioCompra", "$precioCompra")
                         .append("montoTotal", "$montoTotal");
 
         listadoEtapas.add(new Document("$project", project2));
@@ -100,6 +104,8 @@ public class OrdenCompraServices {
                 orden.setCodigoSuplidor(Long.valueOf(doc.get("codigoSuplidor").toString()));
                 orden.setFechaOrden(doc.getDate("fechaOrden"));
                 orden.setUnidadCompra(doc.getString("unidadCompra"));
+                orden.setCantidadOrdenada(doc.getInteger("cantidadOrdenada"));
+                orden.setPrecioCompra(new BigDecimal(doc.get("precioCompra").toString()));
                 orden.setMontoTotal(new BigDecimal(doc.get("montoTotal").toString()));
 
                 lista.add(orden);

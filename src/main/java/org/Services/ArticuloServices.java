@@ -50,7 +50,7 @@ public class ArticuloServices {
         return articulosLista;
     }
 
-    public void updateArticulo(int codigoArticulo, int cantidad, String tipoEntrada){
+    public void updateArticulo(long codigoArticulo, int cantidad, String tipoEntrada){
 
         if(tipoEntrada.equalsIgnoreCase("ENTRADA")){
             articulos.findOneAndUpdate(
