@@ -1,24 +1,32 @@
-org/Database/MongoDB.java
- org.Database.MongoDB
 org/Models/Suplidor.java
  org.Models.Suplidor
-org/Models/ArticuloCompra.java
- org.Models.ArticuloCompra
 org/Services/ArticuloServices.java
  org.Services.ArticuloServices
-org/Services/SuplidorServices.java
- org.Services.SuplidorServices
-org/Models/MovimientoInventario.java
- org.Models.MovimientoInventario
-org/Services/MovimientoServices.java
- org.Services.MovimientoServices
-org/Models/Articulo.java
- org.Models.Articulo
-org/Controllers/MainController.java
- org.Controllers.MainController
+org/Controllers/MovimientosController.java
+ org.Controllers.MovimientosController
+org/Controllers/SuplidoresController.java
+ org.Controllers.SuplidoresController
 org/Models/OrdenCompra.java
  org.Models.OrdenCompra
-org/Main.java
- org.Main
+org/Models/MovimientoInventario.java
+ org.Models.MovimientoInventario
 org/Services/OrdenCompraServices.java
  org.Services.OrdenCompraServices
+org/Helpers/ServiceInstances.java
+ org.Helpers.ServiceInstances
+org/Services/MovimientoServices.java
+ org.Services.MovimientoServices
+org/Controllers/HomeController.java
+ org.Controllers.HomeController
+org/Services/SuplidorServices.java
+ org.Services.SuplidorServices
+org/Controllers/OrdenesController.java
+ org.Controllers.OrdenesController
+org/Database/MongoDB.java
+ org.Database.MongoDB
+org/Models/Articulo.java
+ org.Models.Articulo
+org/Main.java
+ org.Main
+org/Controllers/ArticulosController.java
+ org.Controllers.ArticulosController

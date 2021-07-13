@@ -7,7 +7,7 @@
 
 <#macro page_body>
 <body>
-
+ <p>Esta es la home</p>
 </body>
 </#macro>
 <@display_page/>
