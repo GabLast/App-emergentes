@@ -22,7 +22,7 @@ public class HomeController {
                 get(ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Home");
-                    ctx.render("", freeMarkerVars);
+                    ctx.render("/templates/Home.ftl", freeMarkerVars);
                 });
             });
         });

@@ -28,10 +28,16 @@ public class ArticulosController {
 
             path("/articulo", () -> {
 
+                get("/listar", ctx -> {
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Listar");
+                    ctx.render("/templates/Articulo.ftl", freeMarkerVars);
+                });
+
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
-                    ctx.render("", freeMarkerVars);
+                    ctx.render("/templates/RegistrarArticulo.ftl", freeMarkerVars);
                 });
 
                 post("/registrar", ctx -> {

@@ -6,6 +6,9 @@
 body {
     background: whitesmoke !important;
 }
+.form-group{
+    margin-top: 5px !important;
+}
 
 input[type="file"] {
     display: none !important;
