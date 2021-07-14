@@ -26,6 +26,7 @@ public class OrdenCompraServices {
         orden.put("codigoOrdenCompra", compra.getCodigoOrdenCompra());
         orden.put("codigoArticulo", compra.getCodigoArticulo());
         orden.put("codigoSuplidor", compra.getCodigoSuplidor());
+        orden.put("fechaRequerida", compra.getFechaRequerida());
         orden.put("fechaOrden", compra.getFechaOrden());
         orden.put("precioCompra", compra.getPrecioCompra());
         orden.put("cantidadOrdenada", compra.getCantidadOrdenada());
@@ -33,7 +34,6 @@ public class OrdenCompraServices {
 
         ordenes.insertOne(orden);
     }
-
 
     public List<OrdenCompra> getOrdenes() {
 
@@ -45,6 +45,7 @@ public class OrdenCompraServices {
                 new Document("codigoOrdenCompra", "$codigoOrdenCompra")
                         .append("codigoArticulo", "$codigoArticulo")
                         .append("codigoSuplidor", "$codigoSuplidor")
+                        .append("fechaRequerida", "$fechaRequerida")
                         .append("fechaOrden", "$fechaOrden")
                         .append("precioCompra", "$precioCompra")
                         .append("cantidadOrdenada", "$cantidadOrdenada")
@@ -57,6 +58,7 @@ public class OrdenCompraServices {
         Document _id = new Document("codigoOrdenCompra", "$codigoOrdenCompra")
                 .append("codigoArticulo", "$codigoArticulo")
                 .append("codigoSuplidor", "$codigoSuplidor")
+                .append("fechaRequerida", "$fechaRequerida")
                 .append("fechaOrden", "$fechaOrden")
                 .append("unidadCompra", "$unidadCompra")
                 .append("cantidadOrdenada", "$cantidadOrdenada")
@@ -74,6 +76,7 @@ public class OrdenCompraServices {
                         .append("codigoOrdenCompra", "$_id.codigoOrdenCompra")
                         .append("codigoArticulo", "$_id.codigoArticulo")
                         .append("codigoSuplidor", "$_id.codigoSuplidor")
+                        .append("fechaRequerida", "$_id.fechaRequerida")
                         .append("fechaOrden", "$_id.fechaOrden")
                         .append("unidadCompra", "$_id.unidadCompra")
                         .append("cantidadOrdenada", "$_id.cantidadOrdenada")
@@ -102,6 +105,7 @@ public class OrdenCompraServices {
                 orden.setCodigoOrdenCompra(Long.valueOf(doc.get("codigoOrdenCompra").toString()));
                 orden.setCodigoArticulo(Long.valueOf(doc.get("codigoArticulo").toString()));
                 orden.setCodigoSuplidor(Long.valueOf(doc.get("codigoSuplidor").toString()));
+                orden.setFechaRequerida(doc.getDate("fechaRequerida"));
                 orden.setFechaOrden(doc.getDate("fechaOrden"));
                 orden.setUnidadCompra(doc.getString("unidadCompra"));
                 orden.setCantidadOrdenada(doc.getInteger("cantidadOrdenada"));

@@ -46,8 +46,6 @@ public class OrdenesController {
                     int cantidadOrdenada = ctx.formParam("cantidadOrdenada", Integer.class).get();
                     String unidadcompra = ctx.formParam("unidadcompra");
 
-                    OrdenCompra aux = new OrdenCompra(codigoOrdenCompra, codigoArticulo, codigoSuplidor, fechaOrden, precioCompra, cantidadOrdenada, unidadcompra);
-                    ServiceInstances.ordenCompraServices.insertOrden(aux);
 
                 });
             });

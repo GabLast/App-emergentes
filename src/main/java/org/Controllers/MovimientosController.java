@@ -50,9 +50,7 @@ public class MovimientosController {
                       <option value="audi">Audi</option>
                     </select>*/
 
-                    MovimientoInventario aux = new MovimientoInventario(idarticulo, tipoMovimiento, cantidad, new Date());
-                    ServiceInstances.movimientoServices.insertMovimiento(aux);
-                    ServiceInstances.articuloServices.updateArticulo(idarticulo, cantidad, tipoMovimiento);
+
                 });
             });
 

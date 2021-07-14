@@ -43,8 +43,6 @@ public class SuplidoresController {
                     int tiempoEntrega = ctx.formParam("tiempoEntrega", Integer.class).get();
                     BigDecimal precioCompra = new BigDecimal(ctx.formParam("precioCompra"));
 
-                    Suplidor aux = new Suplidor(idarticulo, idSuplidor, tiempoEntrega, precioCompra);
-                    ServiceInstances.suplidorServices.insertarSuplidor(aux);
                 });
             });
 

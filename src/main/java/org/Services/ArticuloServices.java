@@ -50,6 +50,28 @@ public class ArticuloServices {
         return articulosLista;
     }
 
+    public Articulo getArticuloById(long id)
+    {
+
+        MongoCursor<Document> cursor = articulos.find(eq("codigoArticulo", id)).iterator();
+        Document arti;
+        Articulo aux = null;
+        try{
+            while(cursor.hasNext()){
+                arti = cursor.next();
+                aux = new Articulo(
+                        Long.valueOf(arti.get("codigoArticulo").toString()),
+                        arti.getString("descripcion"),
+                        arti.getString("unidadCompra"),
+                        arti.getInteger("balanceActual")
+                );
+            }
+        } finally {
+            cursor.close();
+        }
+        return aux;
+    }
+
     public void updateArticulo(long codigoArticulo, int cantidad, String tipoEntrada){
 
         if(tipoEntrada.equalsIgnoreCase("ENTRADA")){

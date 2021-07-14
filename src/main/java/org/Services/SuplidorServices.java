@@ -1,5 +1,6 @@
 package org.Services;
 
+import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import org.Database.MongoDB;
@@ -9,6 +10,7 @@ import org.bson.Document;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SuplidorServices {
 
@@ -47,5 +49,102 @@ public class SuplidorServices {
             suplidoresCursor.close();
         }
         return lista;
+    }
+
+    public Suplidor getMejorSuplidor(long idarti, long diasEntrega)
+    {
+        List<Document> listadoEtapas = new ArrayList<>();
+
+        Document lte = new Document("$lte", diasEntrega);
+
+        Document match =
+                new Document("codigoArticulo", idarti)
+                        .append("tiempoEntrega", lte);
+
+
+        listadoEtapas.add(new Document("$match", match));
+
+        Document sort = new Document("$sort",  new Document("precioCompra", 1));
+
+        listadoEtapas.add(sort);
+
+        listadoEtapas.add(new Document("$limit", 1));
+
+        Document project2 =
+                new Document("_id", 0)
+                        .append("codigoSuplidor", "$codigoSuplidor")
+                        .append("tiempoEntrega","$tiempoEntrega")
+                        .append("precioCompra","$precioCompra")
+                        .append("codigoArticulo","$codigoArticulo");
+
+        listadoEtapas.add(new Document("$project", project2));
+
+
+        AggregateIterable<Document> resultadoConsulta = suplidores.aggregate(listadoEtapas);
+
+        int tam = 0;
+//        resultadoConsulta.forEach((var documento) -> {
+//            System.out.println(documento.toJson());
+//        });
+
+        for(Document doc : resultadoConsulta)
+        {
+            if(doc.isEmpty() || tam > 0)
+            {
+                break;
+            }else {
+                tam++;
+            }
+        }
+
+        Suplidor supli = null;
+
+        if(tam > 0) {
+            for (Document doc : resultadoConsulta) {
+                supli = new Suplidor(
+                        Long.valueOf(doc.get("codigoArticulo").toString()),
+                        Long.valueOf(doc.get("codigoSuplidor").toString()),
+                        Integer.valueOf(doc.get("tiempoEntrega").toString()),
+                        new BigDecimal(doc.get("precioCompra").toString())
+                );
+            }
+        }else {
+
+            List<Document> listadoEtapas2 = new ArrayList<>();
+
+            Document match2 =
+                    new Document("codigoArticulo", idarti);
+
+            listadoEtapas2.add(new Document("$match", match2));
+
+            Document sort2 = new Document("$sort",  new Document("tiempoEntrega", 1)
+                                                        .append("precioCompra", 1));
+
+            listadoEtapas2.add(sort2);
+
+            listadoEtapas2.add(new Document("$limit", 1));
+
+            Document project3 =
+                    new Document("_id", 0)
+                            .append("codigoSuplidor", "$codigoSuplidor")
+                            .append("tiempoEntrega","$tiempoEntrega")
+                            .append("precioCompra","$precioCompra")
+                            .append("codigoArticulo","$codigoArticulo");
+
+            listadoEtapas2.add(new Document("$project", project3));
+
+
+            AggregateIterable<Document> resultadoConsulta2 = suplidores.aggregate(listadoEtapas2);
+
+            for (Document doc : resultadoConsulta2) {
+                supli = new Suplidor(
+                        Long.valueOf(doc.get("codigoArticulo").toString()),
+                        Long.valueOf(doc.get("codigoSuplidor").toString()),
+                        Integer.valueOf(doc.get("tiempoEntrega").toString()),
+                        new BigDecimal(doc.get("precioCompra").toString())
+                );
+            }
+        }
+        return supli;
     }
 }

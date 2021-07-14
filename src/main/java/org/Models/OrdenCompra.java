@@ -1,5 +1,7 @@
 package org.Models;
 
+import org.Database.MongoDB;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -9,6 +11,7 @@ public class OrdenCompra {
     private long codigoArticulo;
     private long codigoSuplidor;
     private Date fechaOrden;
+    private Date fechaRequerida;
     private BigDecimal precioCompra;
     private int cantidadOrdenada;
     private BigDecimal montoTotal;
@@ -17,14 +20,23 @@ public class OrdenCompra {
     public OrdenCompra() {
     }
 
-    public OrdenCompra(long codigoOrdenCompra, long codigoArticulo, long codigoSuplidor, Date fechaOrden, BigDecimal precioCompra, int cantidadOrdenada, String unidadCompra) {
-        this.codigoOrdenCompra = codigoOrdenCompra;
+    public OrdenCompra(long codigoArticulo, long codigoSuplidor, BigDecimal precioCompra, int cantidadOrdenada, String unidadCompra, Date fechaOrden, Date fechaRequerida) {
+        this.codigoOrdenCompra = MongoDB.getDB().getCollection("ordenes").countDocuments()+1;
         this.codigoArticulo = codigoArticulo;
         this.codigoSuplidor = codigoSuplidor;
         this.fechaOrden = fechaOrden;
+        this.fechaRequerida = fechaRequerida;
         this.precioCompra = precioCompra;
         this.cantidadOrdenada = cantidadOrdenada;
         this.unidadCompra = unidadCompra;
+    }
+
+    public Date getFechaRequerida() {
+        return fechaRequerida;
+    }
+
+    public void setFechaRequerida(Date fechaRequerida) {
+        this.fechaRequerida = fechaRequerida;
     }
 
     public long getCodigoOrdenCompra() {

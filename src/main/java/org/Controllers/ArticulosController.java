@@ -39,9 +39,7 @@ public class ArticulosController {
                     String unidadcompra = ctx.formParam("unidadcompra");
                     int balanceActual = ctx.formParam("balanceActual", Integer.class).get();
 
-                    Articulo aux = new Articulo(descripcion, unidadcompra, balanceActual);
 
-                    ServiceInstances.articuloServices.insertArticulo(aux);
                 });
             });
 
