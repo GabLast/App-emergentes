@@ -31,10 +31,16 @@ public class SuplidoresController {
 
             path("/suplidor", () -> {
 
+                get("/listar", ctx -> {
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Registrar");
+                    ctx.render("/templates/Suplidor.ftl", freeMarkerVars);
+                });
+
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
-                    ctx.render("", freeMarkerVars);
+                    ctx.render("/templates/RegistrarSuplidor.ftl", freeMarkerVars);
                 });
 
                 post("/registrar", ctx -> {

@@ -14,10 +14,10 @@
             <div class="col-12">
                 <table class="table text-light">
                     <tr>
-                        <th>Codigo</th>
-                        <th>Descripcion</th>
-                        <th>Unidad</th>
-                        <th>Balance</th>
+                        <th>Suplidor</th>
+                        <th>Articulo</th>
+                        <th>Tiempo Entrega</th>
+                        <th>Precio Compra</th>
 
                     </tr>
                 </table>
@@ -26,8 +26,8 @@
             </div>
         </div>
         <div>
-            <form action="/articulo/registrar">
-                <button type="submit" class="btn btn-info mb-3">Registrar Producto</button>
+            <form action="/suplidor/registrar">
+                <button type="submit" class="btn btn-info mb-3">Registrar Suplidor</button>
             </form>
         </div>
     </div>

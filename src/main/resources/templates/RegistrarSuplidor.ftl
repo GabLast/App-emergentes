@@ -7,7 +7,7 @@
 
 <#macro page_body>
     <body>
-    <h1 style="text-align: center;">Ingrese los datos del Movimiento: </h1>
+    <h1 style="text-align: center;">Ingrese los datos del Suplidor: </h1>
     </br>
     <div class="container mt-2">
         <div class="row justify-content-md-center">
@@ -27,13 +27,16 @@
                         </div>
 
                         <div class="form-group mb-2">
-                            <label for="cant">Cantidad:</label>
-                            <input type="text" class="form-control" id="cant" name="cant">
+                            <label for="tiemp">Tiempo Entrega:</label>
+                            <input type="date" class="form-control" id="tiemp" name="tiemp">
                         </div>
 
+                        <div class="form-group mb-2">
+                            <label for="precio">Precio Compra:</label>
+                            <input type="text" class="form-control" id="precio" name="precio">
+                        </div>
 
-
-                        <button type="submit" class="btn btn-primary mt-2">Aceptar</button>
+                        <button type="submit" class="btn btn-primary mt-2">Registrar Suplidor</button>
                     </form>
                 </div>
             </div>

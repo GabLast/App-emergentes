@@ -16,7 +16,7 @@
                     <tr>
                         <th>Codigo</th>
                         <th>Descripcion</th>
-                        <th>Unidad</th>
+                        <th>Unidad Compra</th>
                         <th>Balance</th>
 
                     </tr>

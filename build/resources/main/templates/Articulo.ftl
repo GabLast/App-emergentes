@@ -16,7 +16,7 @@
                     <tr>
                         <th>Codigo</th>
                         <th>Descripcion</th>
-                        <th>Unidad</th>
+                        <th>Unidad Compra</th>
                         <th>Balance</th>
 
                     </tr>
@@ -27,7 +27,7 @@
         </div>
         <div>
             <form action="/articulo/registrar">
-                <button type="submit" class="btn btn-info mb-3">Registrar Producto</button>
+                <button type="submit" class="btn btn-info mb-3">Registrar Articulo</button>
             </form>
         </div>
     </div>

@@ -7,7 +7,7 @@
 
 <#macro page_body>
     <body>
-    <h1 style="text-align: center;">Registrar Movimiento: </h1>
+    <h1 style="text-align: center;">Ingrese los datos del Movimiento: </h1>
     </br>
     <div class="container mt-2">
         <div class="row justify-content-md-center">

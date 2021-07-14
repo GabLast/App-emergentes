@@ -14,12 +14,10 @@
                     </a>
                     <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
                         <li><a class="dropdown-item text-light" href="/articulo/listar">Articulos</a></li>
-                        <li><a class="dropdown-item text-light" href="/movimiento/listar">Movimiento</a></li>
-                        <li><a class="dropdown-item text-light" href="/">Generar Orden Compra</a></li>
+                        <li><a class="dropdown-item text-light" href="/suplidor/listar">Suplidores</a></li>
+                        <li><a class="dropdown-item text-light" href="/movimiento/listar">Movimientos</a></li>
+                        <li><a class="dropdown-item text-light" href="/">Orden Compra</a></li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cerrar sesi&oacute;n</a>
                 </li>
             </ul>
         </div>
