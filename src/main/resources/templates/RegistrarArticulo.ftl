@@ -16,7 +16,7 @@
                     <form action="/registrar" method="post"  enctype="application/x-www-form-urlencoded">
 
                         <div class="form-group mb-2">
-                            <label for="nombre">Descripcion:</label>
+                            <label for="nombre">Descripci&oacute;n:</label>
                             <input type="text" class="form-control" id="desc" name="desc">
                         </div>
 

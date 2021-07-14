@@ -8,7 +8,7 @@
 <#macro page_body>
     <body>
     <div class="container mt-5" >
-        <h1 style="text-align: center">Listado de Articulos</h1>
+        <h1 style="text-align: center">Listado de Suplidores</h1>
         </br>
         <div class="row justify-content-md-center">
             <div class="col-12">
@@ -27,7 +27,7 @@
         </div>
         <div>
             <form action="/articulo/registrar">
-                <button type="submit" class="btn btn-info mb-3">Registrar Articulo</button>
+                <button type="submit" class="btn btn-info mb-3">Registrar Producto</button>
             </form>
         </div>
     </div>

@@ -4,6 +4,7 @@ import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
 import org.Controllers.ArticulosController;
 import org.Controllers.HomeController;
+import org.Controllers.MovimientosController;
 import org.Models.OrdenCompra;
 import org.Services.OrdenCompraServices;
 
@@ -22,6 +23,7 @@ public class Main {
 
         new HomeController(app).routes();
         new ArticulosController(app).routes();
+        new MovimientosController(app).routes();
 
         app.get("/", ctx -> {
             ctx.redirect("/home");

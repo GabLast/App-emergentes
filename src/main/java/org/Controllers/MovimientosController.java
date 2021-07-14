@@ -31,10 +31,16 @@ public class MovimientosController {
 
             path("/movimiento", () -> {
 
+                get("/listar", ctx -> {
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Registrar");
+                    ctx.render("/templates/Movimiento.ftl", freeMarkerVars);
+                });
+
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
-                    ctx.render("", freeMarkerVars);
+                    ctx.render("/templates/RegistrarMov.ftl", freeMarkerVars);
                 });
 
                 post("/registrar", ctx -> {

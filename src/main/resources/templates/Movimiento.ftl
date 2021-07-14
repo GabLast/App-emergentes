@@ -8,16 +8,16 @@
 <#macro page_body>
     <body>
     <div class="container mt-5" >
-        <h1 style="text-align: center">Listado de Articulos</h1>
+        <h1 style="text-align: center">Listado de Movimientos</h1>
         </br>
         <div class="row justify-content-md-center">
             <div class="col-12">
                 <table class="table text-light">
                     <tr>
-                        <th>Codigo</th>
-                        <th>Descripcion</th>
-                        <th>Unidad</th>
-                        <th>Balance</th>
+                        <th>Codigo Articulo</th>
+                        <th>Tipo de Movimiento</th>
+                        <th>Cantidad</th>
+                        <th>Fecha Movimiento</th>
 
                     </tr>
                 </table>
@@ -26,8 +26,8 @@
             </div>
         </div>
         <div>
-            <form action="/articulo/registrar">
-                <button type="submit" class="btn btn-info mb-3">Registrar Articulo</button>
+            <form action="/movimiento/registrar">
+                <button type="submit" class="btn btn-info mb-3">Registrar Movimiento</button>
             </form>
         </div>
     </div>
