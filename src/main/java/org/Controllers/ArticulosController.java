@@ -42,9 +42,13 @@ public class ArticulosController {
 
                 post("/registrar", ctx -> {
                     String descripcion = ctx.formParam("descripcion");
-                    String unidadcompra = ctx.formParam("unidadcompra");
+                    String unidadcompra = ctx.formParam("unidadCompra");
                     int balanceActual = ctx.formParam("balanceActual", Integer.class).get();
 
+                    Articulo aux = new Articulo(descripcion, unidadcompra, balanceActual);
+
+                    ServiceInstances.articuloServices.insertArticulo(aux);
+                    ctx.redirect("/articulo/listar");
 
                 });
             });

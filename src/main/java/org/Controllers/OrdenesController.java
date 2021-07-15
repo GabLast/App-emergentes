@@ -1,9 +1,12 @@
 package org.Controllers;
 
 import io.javalin.Javalin;
+import org.Helpers.Funciones;
 import org.Helpers.ServiceInstances;
+import org.Models.Articulo;
 import org.Models.MovimientoInventario;
 import org.Models.OrdenCompra;
+import org.Models.Suplidor;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -31,6 +34,12 @@ public class OrdenesController {
 
             path("/ordenes", () -> {
 
+                get("/listar", ctx -> {
+                    Map<String, Object> freeMarkerVars = new HashMap<>();
+                    freeMarkerVars.put("title", "Listar");
+                    ctx.render("/templates/Suplidor.ftl", freeMarkerVars);
+                });
+
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
@@ -38,15 +47,29 @@ public class OrdenesController {
                 });
 
                 post("/registrar", ctx -> {
-                    long codigoOrdenCompra = ctx.formParam("idarti", Long.class).get();
                     long codigoArticulo = ctx.formParam("codigoArticulo", Long.class).get();
-                    long codigoSuplidor = ctx.formParam("codigoSuplidor", Long.class).get();
-                    Date fechaOrden = ctx.formParam("fechaOrden", Date.class).get();
-                    BigDecimal precioCompra = new BigDecimal(ctx.formParam("precioCompra"));
-                    int cantidadOrdenada = ctx.formParam("cantidadOrdenada", Integer.class).get();
-                    String unidadcompra = ctx.formParam("unidadcompra");
+                    Date fechaRequerida = ctx.formParam("fechaRequerida", Date.class).get();
+                    int cantRequeridaInventario = ctx.formParam("cantRequeridaInventario", Integer.class).get();
 
+                    Articulo arti = ServiceInstances.articuloServices.getArticuloById(codigoArticulo);
+                    int diasEntrega = Funciones.calcularDiasParaEntregar(fechaRequerida);
+                    Suplidor supli = ServiceInstances.suplidorServices.getMejorSuplidor(codigoArticulo, diasEntrega);
 
+                    Date fechaOrden = Funciones.calcularFechaOrden(supli, fechaRequerida);
+                    int cantidadOrdenar = Funciones.cantidadOrdenar(codigoArticulo, fechaRequerida, cantRequeridaInventario);
+
+                    OrdenCompra orden = new OrdenCompra(
+                            arti.getCodigoArticulo(),
+                            supli.getCodigoSuplidor(),
+                            supli.getPrecioCompra(),
+                            cantidadOrdenar,
+                            arti.getUnidadCompra(),
+                            fechaOrden,
+                            fechaRequerida
+                    );
+
+                    ServiceInstances.ordenCompraServices.insertOrden(orden);
+                    ctx.redirect("/ordenes/registrar");
                 });
             });
 

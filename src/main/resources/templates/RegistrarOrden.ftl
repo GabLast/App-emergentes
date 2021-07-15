@@ -7,13 +7,13 @@
 
 <#macro page_body>
     <body>
-    <h1 style="text-align: center;">Ingrese los datos del Suplidor: </h1>
+    <h1 style="text-align: center;">Generaci&oacute;n de &oacute;rdenes autom&aacute;ticas</h1>
     </br>
     <div class="container mt-2">
         <div class="row justify-content-md-center">
             <div class="col-6">
                 <div class="card text-dark" style="padding: 20px; background-color: lightgray">
-                    <form action="/suplidor/registrar" method="post" enctype="application/x-www-form-urlencoded">
+                    <form action="/registrar" method="post"  enctype="application/x-www-form-urlencoded">
                         <#if articulos?has_content>
                             <div class="form-group mb-2">
                                 <label for="exampleFormControlSelect1">Art&iacute;culo:</label>
@@ -27,14 +27,13 @@
                                 </select>
                             </div>
                             <div class="form-group mb-2">
-                                <label for="tiempoEntrega">Tiempo Entrega:</label>
-                                <input type="number" min="1" class="form-control" id="tiempoEntrega" name="tiempoEntrega">
+                                <label for="tiempoEntrega">Fecha Requerida:</label>
+                                <input type="date" class="form-control" id="fechaRequerida" name="fechaRequerida">
                             </div>
                             <div class="form-group mb-2">
-                                <label for="precioCompra">Precio Compra:</label>
-                                <input type="number" min="1" class="form-control" id="precioCompra" name="precioCompra">
+                                <label for="cantRequeridaInventario">Cantidad Requerida en Inventario:</label>
+                                <input type="cantRequeridaInventario" min="1" class="form-control" id="cantRequeridaInventario" name="precioCompra">
                             </div>
-
                             <button type="submit" class="btn btn-primary mt-2">Registrar Suplidor</button>
                         <#else>
                             <h4 style="text-align: center;">No hay articulos registrados. Registrar articulos antes de continuar</h4>

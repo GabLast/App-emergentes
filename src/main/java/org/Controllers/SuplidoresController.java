@@ -33,7 +33,7 @@ public class SuplidoresController {
 
                 get("/listar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
-                    freeMarkerVars.put("title", "Registrar");
+                    freeMarkerVars.put("title", "Listar");
                     ctx.render("/templates/Suplidor.ftl", freeMarkerVars);
                 });
 
@@ -49,6 +49,9 @@ public class SuplidoresController {
                     int tiempoEntrega = ctx.formParam("tiempoEntrega", Integer.class).get();
                     BigDecimal precioCompra = new BigDecimal(ctx.formParam("precioCompra"));
 
+                    Suplidor aux = new Suplidor(idarticulo, idSuplidor, tiempoEntrega, precioCompra);
+                    ServiceInstances.suplidorServices.insertarSuplidor(aux);
+                    ctx.redirect("/suplidor/listar");
                 });
             });
 

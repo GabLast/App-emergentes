@@ -18,7 +18,6 @@
                         <th>Tipo de Movimiento</th>
                         <th>Cantidad</th>
                         <th>Fecha Movimiento</th>
-
                     </tr>
                 </table>
                 <br/><br/>
