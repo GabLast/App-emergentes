@@ -31,6 +31,7 @@ public class ArticulosController {
                 get("/listar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Listar");
+                    freeMarkerVars.put("articulos", ServiceInstances.articuloServices.getArticulos());
                     ctx.render("/templates/Articulo.ftl", freeMarkerVars);
                 });
 
@@ -42,9 +43,13 @@ public class ArticulosController {
 
                 post("/registrar", ctx -> {
                     String descripcion = ctx.formParam("descripcion");
-                    String unidadcompra = ctx.formParam("unidadcompra");
+                    String unidadcompra = ctx.formParam("unidadCompra");
                     int balanceActual = ctx.formParam("balanceActual", Integer.class).get();
 
+                    Articulo aux = new Articulo(descripcion, unidadcompra, balanceActual);
+
+                    ServiceInstances.articuloServices.insertArticulo(aux);
+                    ctx.redirect("/articulo/listar");
 
                 });
             });

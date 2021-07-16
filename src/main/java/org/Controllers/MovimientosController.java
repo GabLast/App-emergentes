@@ -33,7 +33,8 @@ public class MovimientosController {
 
                 get("/listar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
-                    freeMarkerVars.put("title", "Registrar");
+                    freeMarkerVars.put("title", "Listar");
+                    freeMarkerVars.put("movimientos", ServiceInstances.movimientoServices.getMovimientos());
                     ctx.render("/templates/Movimiento.ftl", freeMarkerVars);
                 });
 
@@ -44,19 +45,20 @@ public class MovimientosController {
                 });
 
                 post("/registrar", ctx -> {
-                    long idarticulo = ctx.formParam("idarti", Long.class).get();
+                    long idarticulo = ctx.formParam("idarticulo", Long.class).get();
                     String tipoMovimiento = ctx.formParam("tipoMovimiento");
                     int cantidad = ctx.formParam("cantidad", Integer.class).get();
 
-                    /*<label for="cars">Choose a car:</label>
-                    <select id="cars" name="cars">
-                      <option value="volvo">Volvo</option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
-                    </select>*/
+                    if(tipoMovimiento.isEmpty() || idarticulo < 1)
+                    {
+                        ctx.redirect("/404.html");
+                    }
 
+                    MovimientoInventario aux = new MovimientoInventario(idarticulo, tipoMovimiento, cantidad, new Date());
+                    ServiceInstances.movimientoServices.insertMovimiento(aux);
+                    ServiceInstances.articuloServices.updateArticulo(idarticulo, cantidad, tipoMovimiento);
 
+                    ctx.redirect("/movimiento/listar");
                 });
             });
 

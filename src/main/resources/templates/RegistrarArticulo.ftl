@@ -13,24 +13,23 @@
         <div class="row justify-content-md-center">
             <div class="col-6">
                 <div class="card text-dark" style="padding: 20px; background-color: lightgray">
-                    <form action="/registrar" method="post"  enctype="application/x-www-form-urlencoded">
+                    <form action="/articulo/registrar" method="post"  enctype="application/x-www-form-urlencoded">
 
                         <div class="form-group mb-2">
-                            <label for="nombre">Descripci&oacute;n:</label>
-                            <input type="text" class="form-control" id="desc" name="desc">
+                            <label for="descripcion">Descripci&oacute;n:</label>
+                            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label for="precio">Unidad Compra:</label>
-                            <input type="text" class="form-control" id="unid" name="unid">
+                            <label for="unidadCompra">Unidad Compra:</label>
+                            <input type="text" class="form-control" id="unidadCompra" name="unidadCompra" required>
                         </div>
 
                         <div class="form-group mb-2">
-                            <label for="precio">Balance:</label>
-                            <input type="text" class="form-control" id="balance" name="balance">
+                            <label for="balanceActual">Unidades en Inventario:</label>
+                            <input type="number" min="0" class="form-control" id="balanceActual" name="balanceActual" required>
                         </div>
-
-                        <button type="submit" class="btn btn-primary mt-2">Registrar Articulo</button>
+                        <button type="submit" class="btn btn-primary btn-custom1 mt-2">Registrar</button>
                     </form>
                 </div>
             </div>

@@ -72,15 +72,15 @@ public class ArticuloServices {
         return aux;
     }
 
-    public void updateArticulo(long codigoArticulo, int cantidad, String tipoEntrada){
+    public void updateArticulo(long codigoArticulo, int cantidad, String tipoMovimiento){
 
-        if(tipoEntrada.equalsIgnoreCase("ENTRADA")){
+        if(tipoMovimiento.equalsIgnoreCase("ENTRADA")){
             articulos.findOneAndUpdate(
                     eq("codigoArticulo", codigoArticulo),
                     new Document("$inc", new Document("balanceActual", cantidad))
             );
         }
-        else if(tipoEntrada.equalsIgnoreCase("SALIDA")){
+        else if(tipoMovimiento.equalsIgnoreCase("SALIDA")){
             articulos.findOneAndUpdate(
                     eq("codigoArticulo", codigoArticulo),
                     new Document("$inc", new Document("balanceActual", -1 * cantidad))
