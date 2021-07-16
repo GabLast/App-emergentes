@@ -37,13 +37,13 @@ public class OrdenesController {
                 get("/listar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Listar");
-                    ctx.render("/templates/Suplidor.ftl", freeMarkerVars);
+                    ctx.render("/templates/ListarOrdenes.ftl", freeMarkerVars);
                 });
 
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
-                    ctx.render("", freeMarkerVars);
+                    ctx.render("/templates/RegistrarOrden.ftl", freeMarkerVars);
                 });
 
                 post("/registrar", ctx -> {

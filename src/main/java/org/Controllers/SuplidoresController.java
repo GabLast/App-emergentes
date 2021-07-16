@@ -8,6 +8,7 @@ import org.Models.Suplidor;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static io.javalin.apibuilder.ApiBuilder.*;
@@ -48,6 +49,15 @@ public class SuplidoresController {
                     long idSuplidor = ctx.formParam("idSuplidor", Long.class).get();
                     int tiempoEntrega = ctx.formParam("tiempoEntrega", Integer.class).get();
                     BigDecimal precioCompra = new BigDecimal(ctx.formParam("precioCompra"));
+
+                    List<Suplidor> suplis = ServiceInstances.suplidorServices.getSuplidores();
+
+                    if(suplis.stream().filter(pro -> pro.getCodigoSuplidor() == idSuplidor && pro.getCodigoArticulo() == idarticulo).findFirst().orElse(null) != null)
+                    {
+                        System.out.println("Un suplidor ya proporciona este articulo. No se puede repetir el mismo articulos 2 veces");
+                        ctx.redirect("404.html");
+                    }
+
 
                     Suplidor aux = new Suplidor(idarticulo, idSuplidor, tiempoEntrega, precioCompra);
                     ServiceInstances.suplidorServices.insertarSuplidor(aux);

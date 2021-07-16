@@ -31,6 +31,7 @@ public class ArticulosController {
                 get("/listar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Listar");
+                    freeMarkerVars.put("articulos", ServiceInstances.articuloServices.getArticulos());
                     ctx.render("/templates/Articulo.ftl", freeMarkerVars);
                 });
 
