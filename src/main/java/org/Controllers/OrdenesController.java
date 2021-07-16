@@ -4,11 +4,9 @@ import io.javalin.Javalin;
 import org.Helpers.Funciones;
 import org.Helpers.ServiceInstances;
 import org.Models.Articulo;
-import org.Models.MovimientoInventario;
 import org.Models.OrdenCompra;
 import org.Models.Suplidor;
 
-import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -62,6 +60,7 @@ public class OrdenesController {
                     Suplidor supli = ServiceInstances.suplidorServices.getMejorSuplidor(codigoArticulo, diasEntrega);
 
                     Date fechaOrden = Funciones.calcularFechaOrden(supli, fechaRequerida);
+                    System.out.println(fechaOrden);
                     int cantidadOrdenar = Funciones.cantidadOrdenar(codigoArticulo, fechaRequerida, cantRequeridaInventario);
 
                     OrdenCompra orden = new OrdenCompra(

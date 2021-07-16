@@ -30,11 +30,12 @@ public class Funciones {
 
     public static Date calcularFechaOrden(Suplidor supli, Date fechaRequerida)
     {
-        Calendar cal = null;
+        Calendar cal = Calendar.getInstance();
         cal.setTime(fechaRequerida);
         cal.add(Calendar.DATE, (supli.getTiempoEntrega() * -1) - 1);
+        Date fechaOrden = cal.getTime();
 
-        return cal.getTime();
+        return fechaOrden;
 
     }
 

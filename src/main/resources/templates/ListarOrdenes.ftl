@@ -10,13 +10,13 @@
     <div class="row">
         <div class="col-md-8 offset-2">
             <div class="container-fluid">
-                <div class="modal-dialog modal-dialog-scrollable" role="document" style="max-height: 600px;">
+                <div class="modal-dialog modal-dialog-scrollable" role="document" style="max-height: 600px; width: 800px">
                     <div class="modal-content">
                         <div class="modal-header" style="background: #080808;color:rgb(255, 255, 255)">
                             <h5 class="modal-title">&Oacute;rdenes</h5>
                         </div>
                         <div class="modal-body" id="commentbody">
-                            <div class="table-responsive" style="height: 400px">
+                            <div class="table-responsive" style="height: 400px; width: 100%">
                                 <table class="table table-striped table-bordered">
                                     <thead class="thead-dark text-center">
                                     <tr>
@@ -39,8 +39,8 @@
                                                     <td>${art.codigoOrdenCompra}</td>
                                                     <td>${art.codigoArticulo}</td>
                                                     <td>${art.codigoSuplidor}</td>
-                                                    <td>${art.fechaOrden}</td>
-                                                    <td>${art.fechaRequerida}</td>
+                                                    <td>${art.fechaOrden?datetime}</td>
+                                                    <td>${art.fechaRequerida?datetime}</td>
                                                     <td>${art.precioCompra}</td>
                                                     <td>${art.cantidadOrdenada}</td>
                                                     <td>${art.montoTotal}</td>
