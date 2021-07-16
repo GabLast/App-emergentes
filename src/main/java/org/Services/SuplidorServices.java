@@ -1,9 +1,11 @@
 package org.Services;
 
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.AggregateIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import org.Database.MongoDB;
+import org.Models.Articulo;
 import org.Models.Suplidor;
 import org.bson.Document;
 
@@ -11,6 +13,8 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+
+import static com.mongodb.client.model.Filters.eq;
 
 public class SuplidorServices {
 
@@ -28,6 +32,30 @@ public class SuplidorServices {
         suplidores.insertOne(supli);
     }
 
+    public Suplidor getSuplidorByIdAndArti(long idsup, long idart)
+    {
+        BasicDBObject criteria = new BasicDBObject();
+        criteria.append("codigoArticulo", idart);
+        criteria.append("codigoSuplidor", idsup);
+        MongoCursor<Document> cursor = suplidores.find(criteria).iterator();
+        Document result;
+        Suplidor aux = null;
+        try{
+            while(cursor.hasNext()){
+                result = cursor.next();
+                Long codigoArticulo = result.getLong("codigoArticulo");
+                Long codigoSuplidor = result.getLong("codigoSuplidor");
+                int tiempoEntrega = result.getInteger("tiempoEntrega");
+                BigDecimal precioCompra = new BigDecimal(result.get("precioCompra").toString());
+
+                aux = new Suplidor(codigoArticulo, codigoSuplidor, tiempoEntrega, precioCompra);
+            }
+        } finally {
+            cursor.close();
+        }
+        return aux;
+    }
+
     public List<Suplidor> getSuplidores(){
         MongoCursor<Document> suplidoresCursor = suplidores.find().iterator();
         Document result;
@@ -39,7 +67,7 @@ public class SuplidorServices {
                 Long codigoArticulo = result.getLong("codigoArticulo");
                 Long codigoSuplidor = result.getLong("codigoSuplidor");
                 int tiempoEntrega = result.getInteger("tiempoEntrega");
-                BigDecimal precioCompra = new BigDecimal(result.getInteger("precioCompra"));
+                BigDecimal precioCompra = new BigDecimal(result.get("precioCompra").toString());
 
                 Suplidor aux = new Suplidor(codigoArticulo, codigoSuplidor, tiempoEntrega, precioCompra);
 

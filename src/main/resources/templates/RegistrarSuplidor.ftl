@@ -27,12 +27,16 @@
                                 </select>
                             </div>
                             <div class="form-group mb-2">
+                                <label for="idSuplidor">C&oacute;digo del Suplidor:</label>
+                                <input type="number" min="1" class="form-control" id="idSuplidor" name="idSuplidor" required>
+                            </div>
+                            <div class="form-group mb-2">
                                 <label for="tiempoEntrega">Tiempo Entrega:</label>
-                                <input type="number" min="1" class="form-control" id="tiempoEntrega" name="tiempoEntrega">
+                                <input type="number" min="1" class="form-control" id="tiempoEntrega" name="tiempoEntrega" required>
                             </div>
                             <div class="form-group mb-2">
                                 <label for="precioCompra">Precio Compra:</label>
-                                <input type="number" min="1" class="form-control" id="precioCompra" name="precioCompra">
+                                <input type="number" min="1" class="form-control" id="precioCompra" name="precioCompra" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary mt-2">Registrar Suplidor</button>

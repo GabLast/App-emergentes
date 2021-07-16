@@ -8,7 +8,7 @@
 <#macro page_body>
     <body>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8 offset-2">
             <div class="container-fluid">
                 <div class="modal-dialog modal-dialog-scrollable" role="document" style="max-height: 600px;">
                     <div class="modal-content">

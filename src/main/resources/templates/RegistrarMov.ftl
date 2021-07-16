@@ -28,7 +28,7 @@
                             </div>
                             <div class="form-group mb-2">
                                 <label for="movi">Tipo de Movimiento:</label>
-                                <select id="movi" class="form-select" aria-label="Default select example" required>
+                                <select id="movi" class="form-select" aria-label="Default select example" name="tipoMovimiento" required>
                                     <option selected>Seleccione</option>
                                     <option value="ENTRADA">Entrada</option>
                                     <option value="SALIDA">Salida</option>

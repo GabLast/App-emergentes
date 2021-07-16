@@ -42,27 +42,30 @@ public class SuplidoresController {
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
+                    freeMarkerVars.put("articulos", ServiceInstances.articuloServices.getArticulos());
                     ctx.render("/templates/RegistrarSuplidor.ftl", freeMarkerVars);
                 });
 
                 post("/registrar", ctx -> {
-                    long idarticulo = ctx.formParam("idarti", Long.class).get();
+                    long idarticulo = ctx.formParam("idarticulo", Long.class).get();
                     long idSuplidor = ctx.formParam("idSuplidor", Long.class).get();
                     int tiempoEntrega = ctx.formParam("tiempoEntrega", Integer.class).get();
                     BigDecimal precioCompra = new BigDecimal(ctx.formParam("precioCompra"));
 
-                    List<Suplidor> suplis = ServiceInstances.suplidorServices.getSuplidores();
-
-                    if(suplis.stream().filter(pro -> pro.getCodigoSuplidor() == idSuplidor && pro.getCodigoArticulo() == idarticulo).findFirst().orElse(null) != null)
+                    if(idarticulo < 1)
+                    {
+                        System.out.println("Se ingreso un artículo no válido");
+                        ctx.redirect("/404.html");
+                    }else if(ServiceInstances.suplidorServices.getSuplidorByIdAndArti(idSuplidor, idarticulo) != null)
                     {
                         System.out.println("Un suplidor ya proporciona este articulo. No se puede repetir el mismo articulos 2 veces");
-                        ctx.redirect("404.html");
+                        ctx.redirect("/404.html");
+                    }else {
+                        Suplidor aux = new Suplidor(idarticulo, idSuplidor, tiempoEntrega, precioCompra);
+                        ServiceInstances.suplidorServices.insertarSuplidor(aux);
+                        ctx.redirect("/suplidor/listar");
                     }
 
-
-                    Suplidor aux = new Suplidor(idarticulo, idSuplidor, tiempoEntrega, precioCompra);
-                    ServiceInstances.suplidorServices.insertarSuplidor(aux);
-                    ctx.redirect("/suplidor/listar");
                 });
             });
 

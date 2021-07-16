@@ -41,6 +41,7 @@ public class MovimientosController {
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
+                    freeMarkerVars.put("articulos", ServiceInstances.articuloServices.getArticulos());
                     ctx.render("/templates/RegistrarMov.ftl", freeMarkerVars);
                 });
 

@@ -9,6 +9,7 @@ import org.Models.OrdenCompra;
 import org.Models.Suplidor;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,12 +45,16 @@ public class OrdenesController {
                 get("/registrar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Registrar");
+                    freeMarkerVars.put("articulos", ServiceInstances.articuloServices.getArticulos());
                     ctx.render("/templates/RegistrarOrden.ftl", freeMarkerVars);
                 });
 
                 post("/registrar", ctx -> {
                     long codigoArticulo = ctx.formParam("codigoArticulo", Long.class).get();
-                    Date fechaRequerida = ctx.formParam("fechaRequerida", Date.class).get();
+
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    Date fechaRequerida = format.parse(ctx.formParam("fechaRequerida"));
+
                     int cantRequeridaInventario = ctx.formParam("cantRequeridaInventario", Integer.class).get();
 
                     Articulo arti = ServiceInstances.articuloServices.getArticuloById(codigoArticulo);
@@ -70,7 +75,7 @@ public class OrdenesController {
                     );
 
                     ServiceInstances.ordenCompraServices.insertOrden(orden);
-                    ctx.redirect("/ordenes/registrar");
+                    ctx.redirect("/ordenes/listar");
                 });
             });
 

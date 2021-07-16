@@ -2,10 +2,8 @@ package org;
 
 import io.javalin.Javalin;
 import io.javalin.core.util.RouteOverviewPlugin;
-import org.Controllers.ArticulosController;
-import org.Controllers.HomeController;
-import org.Controllers.MovimientosController;
-import org.Controllers.SuplidoresController;
+import org.Controllers.*;
+import org.Helpers.ServiceInstances;
 import org.Models.OrdenCompra;
 import org.Services.OrdenCompraServices;
 
@@ -27,6 +25,7 @@ public class Main {
         new ArticulosController(app).routes();
         new MovimientosController(app).routes();
         new SuplidoresController(app).routes();
+        new OrdenesController(app).routes();
 
         app.get("/", ctx -> {
             ctx.redirect("/home");
@@ -36,22 +35,5 @@ public class Main {
             ctx.redirect("/404.html");
         });
 
-//        OrdenCompraServices a = new OrdenCompraServices();
-//        List<OrdenCompra> lista = a.getOrdenes();
-//
-//        for(OrdenCompra orden : lista)
-//        {
-//            System.out.println("Testing");
-//            System.out.println(orden.getCodigoArticulo());
-//            System.out.println(orden.getCodigoOrdenCompra());
-//            System.out.println(orden.getCodigoSuplidor());
-//            System.out.println(orden.getFechaOrden());
-//            System.out.println(orden.getUnidadCompra());
-//            System.out.println(orden.getMontoTotal());
-//        }
-
-//        Calendar cal = Calendar.getInstance();
-//        System.out.println(cal.getTime());
-//        System.out.println();
     }
 }

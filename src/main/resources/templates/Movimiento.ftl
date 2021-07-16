@@ -8,7 +8,7 @@
 <#macro page_body>
     <body>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8 offset-2">
             <div class="container-fluid">
                 <div class="modal-dialog modal-dialog-scrollable" role="document" style="max-height: 600px;">
                     <div class="modal-content">
@@ -36,7 +36,7 @@
                                                     <td>${mov.codigoArticulo}</td>
                                                     <td>${mov.tipoMovimiento}</td>
                                                     <td>${mov.cantidad}</td>
-                                                    <td>${mov.fechaMovimiento}</td>
+                                                    <td>${mov.fechaMovimiento?datetime}</td>
                                                 </form>
                                             </tr>
                                         </#list>

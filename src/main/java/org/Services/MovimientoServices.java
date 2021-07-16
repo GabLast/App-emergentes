@@ -27,7 +27,7 @@ public class MovimientoServices {
         movi.put("codigoArticulo", movimiento.getCodigoArticulo());
         movi.put("tipoMovimiento", movimiento.getTipoMovimiento());
         movi.put("cantidad", movimiento.getCantidad());
-        movi.put("fechaMovmiento", movimiento.getFechaMovimiento());
+        movi.put("fechaMovimiento", movimiento.getFechaMovimiento());
 
         movimientos.insertOne(movi);
     }
