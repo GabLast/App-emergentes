@@ -37,6 +37,7 @@ public class OrdenesController {
                 get("/listar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Listar");
+                    freeMarkerVars.put("ordenes", ServiceInstances.ordenCompraServices.getOrdenes());
                     ctx.render("/templates/ListarOrdenes.ftl", freeMarkerVars);
                 });
 

@@ -35,6 +35,7 @@ public class SuplidoresController {
                 get("/listar", ctx -> {
                     Map<String, Object> freeMarkerVars = new HashMap<>();
                     freeMarkerVars.put("title", "Listar");
+                    freeMarkerVars.put("suplidores", ServiceInstances.suplidorServices.getSuplidores());
                     ctx.render("/templates/Suplidor.ftl", freeMarkerVars);
                 });
 
