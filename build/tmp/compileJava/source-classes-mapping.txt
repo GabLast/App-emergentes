@@ -4,8 +4,8 @@ org/Services/ArticuloServices.java
  org.Services.ArticuloServices
 org/Database/MongoDB.java
  org.Database.MongoDB
-org/Services/OrdenCompraServices.java
- org.Services.OrdenCompraServices
+org/Services/SuplidorServices.java
+ org.Services.SuplidorServices
 org/Models/OrdenCompra.java
  org.Models.OrdenCompra
 org/Models/MovimientoInventario.java
@@ -22,13 +22,13 @@ org/Controllers/MovimientosController.java
  org.Controllers.MovimientosController
 org/Controllers/HomeController.java
  org.Controllers.HomeController
-org/Helpers/ServiceInstances.java
- org.Helpers.ServiceInstances
-org/Services/SuplidorServices.java
- org.Services.SuplidorServices
 org/Helpers/Funciones.java
  org.Helpers.Funciones
 org/Main.java
  org.Main
 org/Controllers/OrdenesController.java
  org.Controllers.OrdenesController
+org/Helpers/ServiceInstances.java
+ org.Helpers.ServiceInstances
+org/Services/OrdenCompraServices.java
+ org.Services.OrdenCompraServices

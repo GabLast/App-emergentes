@@ -123,4 +123,72 @@ public class OrdenCompraServices {
     }
 
 
+    public List<OrdenCompra> ordenesPorSuplidorFechaOrden() {
+
+        List<OrdenCompra> lista = new ArrayList<>();
+
+        List<Document> listadoEtapas = new ArrayList<>();
+
+        Document opcionesProject =
+                new Document("codigoOrdenCompra", "$codigoOrdenCompra")
+                        .append("codigoSuplidor", "$codigoSuplidor")
+                        .append("fechaOrden", "$fechaOrden");
+
+        listadoEtapas.add(new Document("$project", opcionesProject));
+
+        Document _id = new Document("codigoOrdenCompra", "$codigoOrdenCompra")
+                .append("codigoSuplidor", "$codigoSuplidor")
+                .append("fechaOrden", "$fechaOrden");
+
+        Document group = new Document("_id", _id);
+
+        listadoEtapas.add(new Document("$group", group));
+
+        Document project2 =
+                new Document("_id", 0)
+                        .append("codigoOrdenCompra", "$_id.codigoOrdenCompra")
+                        .append("codigoSuplidor", "$_id.codigoSuplidor")
+                        .append("fechaOrden", "$_id.fechaOrden");
+
+
+        listadoEtapas.add(new Document("$project", project2));
+
+        Document ordenarPorOrden = new Document("codigoOrdenCompra", 1);
+
+        Document sort = new Document("$sort", ordenarPorOrden);
+
+        listadoEtapas.add(sort);
+
+        AggregateIterable<Document> resultadoConsulta = ordenes.aggregate(listadoEtapas);
+
+        resultadoConsulta.forEach((var documento) -> {
+            System.out.println(documento.toJson());
+        });
+
+//        OrdenCompra orden;
+//        for (Document doc : resultadoConsulta) {
+//
+//            try {
+//                orden = new OrdenCompra();
+//                orden.setCodigoOrdenCompra(Long.valueOf(doc.get("codigoOrdenCompra").toString()));
+//                orden.setCodigoArticulo(Long.valueOf(doc.get("codigoArticulo").toString()));
+//                orden.setCodigoSuplidor(Long.valueOf(doc.get("codigoSuplidor").toString()));
+//                orden.setFechaRequerida(doc.getDate("fechaRequerida"));
+//                orden.setFechaOrden(doc.getDate("fechaOrden"));
+//                orden.setUnidadCompra(doc.getString("unidadCompra"));
+//                orden.setCantidadOrdenada(doc.getInteger("cantidadOrdenada"));
+//                orden.setPrecioCompra(new BigDecimal(doc.get("precioCompra").toString()));
+//                orden.setMontoTotal(new BigDecimal(doc.get("montoTotal").toString()));
+//
+//                lista.add(orden);
+//            } catch (NullPointerException e) {
+//
+//            }
+//        }
+
+        return null;
+
+    }
+
+
 }
