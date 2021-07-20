@@ -59,6 +59,13 @@ public class MovimientoServices {
 
     public int consumoDiario(long idarti) {
 
+        //La forma correcta de calcularlo es:
+        //Hacerlo entre un rango de fechas y calcularlo con los dias
+        //que tengo entre ellas
+
+        // o
+        // un promedio historico con un avg en vez del sum
+
         List<Document> listadoEtapas = new ArrayList<>();
 
         Document match =
